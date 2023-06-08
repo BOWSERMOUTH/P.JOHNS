@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class Hotdog : MonoBehaviour
 {
     // State Machine
-    public enum pigeonState { followplayer, followcommand, imlistening, returntoplayer, resetpigeon, respawnpigeon, menu }
+    public enum pigeonState { followplayer, followcommand, jumpover, imlistening, returntoplayer, resetpigeon, respawnpigeon, menu }
     public pigeonState hotdogState;
 
     //Pathfinding
@@ -33,6 +36,7 @@ public class Hotdog : MonoBehaviour
     [SerializeField] float pigeonSpeed;
     private float gravity = -9.81f;
     Vector3 targetPosition;
+    Vector3 flytoheight;
 
     // Booleans
     public bool isTouchingGround;
@@ -81,9 +85,23 @@ public class Hotdog : MonoBehaviour
             transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 6f, target.transform.position.z);
             hotdogState = pigeonState.returntoplayer;
         }
+        if (hotdogState == pigeonState.jumpover)
+        {
+            JumpOver();
+        }
         if (hotdogState == pigeonState.menu)
         {
             return;
+        }
+    }
+    private void JumpOver()
+    {
+        hotdog.Move(stop);
+        gravity = 0f;
+        transform.position = Vector3.MoveTowards(transform.position, flytoheight, pigeonSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, flytoheight) <= .2f)
+        {
+            hotdogState = pigeonState.returntoplayer;
         }
     }
     private void Return2Player()
@@ -91,10 +109,10 @@ public class Hotdog : MonoBehaviour
         LookAtTarget();
         target = player;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, pigeonSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, playerArm.transform.position) <= 1f)
+        if (Vector3.Distance(transform.position, player.transform.position) <= .3f)
         {
             crosshair.GetComponent<Crosshair>().thingivehit = null;
-            hotdogState = pigeonState.resetpigeon;
+            hotdogState = pigeonState.followplayer;
         }
     }
     private void ImListening()
@@ -109,7 +127,7 @@ public class Hotdog : MonoBehaviour
         // If I'm At PJOHNs Arm, Go Behind Him & Freeze My Position While Standing Still
         if (transform.position == playerArm.transform.position)
         {
-            gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = 0;
+            //gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = 0;
             myAnimator.SetBool("Flying", false);
         }
         else
@@ -121,7 +139,7 @@ public class Hotdog : MonoBehaviour
     {
         {
             LookAtTarget();
-            gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = 1;
+            //gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = 1;
             myAnimator.SetBool("Flying", false);
             myAnimator.SetBool("Walk", false);
             myAnimator.SetBool("Jump", false);
@@ -150,15 +168,23 @@ public class Hotdog : MonoBehaviour
     // Pigeon Faces Target
     private void LookAtTarget()
     {
-            if (transform.position.x < target.transform.position.x)
-            {
-                transform.localScale = new Vector3(1f, 1f, 1f);
-            }
-            // Look left
-            else if (transform.position.x > target.transform.position.x)
-            {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
+        if (player.GetComponent<PJohns>().target != null)
+        {
+            target = player.GetComponent<PJohns>().target.gameObject;
+        }
+        else
+        {
+            target = player;
+        }
+        if (transform.position.x < target.transform.position.x)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        // Look left
+        else if (transform.position.x > target.transform.position.x)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
     // Hops in direction of PJohn
     private void FollowPlayer()
@@ -180,7 +206,7 @@ public class Hotdog : MonoBehaviour
             NavMesh.CalculatePath(floorposition, target.transform.position, NavMesh.AllAreas, path);
         }
         for (int i = 0; i < path.corners.Length - 1; i++)
-        Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
         Vector3 firstPointDirection = path.corners[1] - transform.position;
         firstPointDirection = firstPointDirection.normalized;
         // If close to PJOHNS, Move Towards him
@@ -228,6 +254,16 @@ public class Hotdog : MonoBehaviour
         hopDistance.y += gravity * Time.deltaTime;
         hotdogVelocity = new Vector3((firstPointDirection.x * hopDistance.x), hopDistance.y, firstPointDirection.z * hopDistance.z);
         hotdog.Move(hotdogVelocity * Time.deltaTime);
+        Vector3 raydirection = new Vector3(transform.localScale.x, 0f, 0f);
+        Vector3 offmeshlinklaser = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        int layerMask = 1 << 14;
+        RaycastHit offlinkhit;
+        if (Physics.Raycast(offmeshlinklaser, raydirection, out offlinkhit, .8f, layerMask))
+        {
+            Debug.DrawRay(offmeshlinklaser, raydirection * .8f, Color.green);
+            flytoheight = new Vector3((transform.position.x + player.transform.position.x) / 2, transform.position.y + 2.5f, transform.position.z);
+            hotdogState = pigeonState.jumpover;
+        }
     }
     private void FlipSprite()
     {
@@ -272,9 +308,11 @@ public class Hotdog : MonoBehaviour
     {
         if (!isTouchingGround)
         {
+            myAnimator.SetBool("Walk", false);
+            myAnimator.SetBool("PigeonListen", false);
             myAnimator.SetBool("Flying", true);
         }
-        else
+        else if (isTouchingGround)
         {
             myAnimator.SetBool("Flying", false);
         }
@@ -286,12 +324,11 @@ public class Hotdog : MonoBehaviour
         myaudiosource.Play();
         //myaudiosource.pitch = 1f;
     }
-
-    // Update is called once per frame
     void Update()
     {
         isTouchingGround = IsGrounded();
         IsGrounded();
+        IsFlying();
         FlipSprite();
         PigeonState();
     }

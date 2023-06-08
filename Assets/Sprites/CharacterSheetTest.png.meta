@@ -2641,6 +2641,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CharacterSheetTest_99
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 182
+        width: 12
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee5c5b1f89c9dd43ad82a868df4d9c6
+      internalID: 112896081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterSheetTest_100
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 182
+        width: 12
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd542c64228a6641a030097caeca4a8
+      internalID: -1084695431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2713,6 +2755,7 @@ TextureImporter:
       CharacterSheetTest_50: -7508048922419880836
       CharacterSheetTest_2: -2917168038890669356
       CharacterSheetTest_51: 4405749071887798488
+      CharacterSheetTest_100: -1084695431
       CharacterSheetTest_10: 3518533258158960469
       CharacterSheetTest_27: -6218397954454811077
       CharacterSheetTest_48: 993920875719618501
@@ -2749,6 +2792,7 @@ TextureImporter:
       CharacterSheetTest_14: -1152335452750617674
       CharacterSheetTest_79: -466936243608080592
       CharacterSheetTest_69: -6336704771911815191
+      CharacterSheetTest_99: 112896081
       CharacterSheetTest_44: -8999495970255220226
       CharacterSheetTest_68: 980589476586121865
   spritePackingTag: 

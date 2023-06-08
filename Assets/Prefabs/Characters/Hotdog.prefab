@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1224076867}
   - component: {fileID: 1224076869}
   - component: {fileID: 1224076868}
-  m_Layer: 3
+  m_Layer: 15
   m_Name: Awareness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224076866}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1733262613}
   - component: {fileID: 1733262612}
   - component: {fileID: 468033076}
-  m_Layer: 3
+  m_Layer: 15
   m_Name: '!'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 721251340}
   m_Layer: 3
   m_Name: Hotdog
-  m_TagString: Hotdog
+  m_TagString: Pigeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,7 +359,7 @@ Transform:
   m_Children:
   - {fileID: 7367452584274266582}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6978558331305631029
 BoxCollider:
@@ -388,6 +388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hotdogState: 0
   target: {fileID: 0}
+  myAnimator: {fileID: 0}
+  myaudiosource: {fileID: 0}
   wingflap: {fileID: 8300000, guid: dd6958c8903631f46a7f64c410370380, type: 3}
   player: {fileID: 0}
   playerArm: {fileID: 0}
@@ -395,7 +397,7 @@ MonoBehaviour:
   audioClips: []
   hopDistance: {x: 1, y: 1, z: 0}
   hotdogVelocity: {x: 0, y: 0, z: 0}
-  pigeonSpeed: 8
+  pigeonSpeed: 5
   isTouchingGround: 0
   jumppressed: 0
   resetpigeon: 0
@@ -527,7 +529,7 @@ GameObject:
   - component: {fileID: 7367452584274266580}
   m_Layer: 3
   m_Name: HotdogSprite
-  m_TagString: Hotdog
+  m_TagString: Pigeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

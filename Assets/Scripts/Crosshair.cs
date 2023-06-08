@@ -56,7 +56,7 @@ public class Crosshair : MonoBehaviour
     {
         // Mouse Controls
         screenPosition = Input.mousePosition;
-        screenPosition.z = Camera.main.nearClipPlane + 6f;
+        screenPosition.z = Camera.main.nearClipPlane + 2f;
         worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         transform.position = worldPosition;
     }
@@ -77,16 +77,16 @@ public class Crosshair : MonoBehaviour
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
             ivehitsomething = true;
+            player.GetComponent<PJohns>().target = hit.collider.gameObject;
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                hotdog.GetComponent<Hotdog>().target = thingivehit.gameObject;
-                hotdog.GetComponent<Hotdog>().hotdogState = Hotdog.pigeonState.followcommand;
                 crosshairstate = CrosshairState.isdisabled;
                 thingivehit = null;
             }
         }
         else if (hit.collider == null)
         {
+            player.GetComponent<PJohns>().target = null;
             thingivehit = null;
             ivehitsomething = false;
         }

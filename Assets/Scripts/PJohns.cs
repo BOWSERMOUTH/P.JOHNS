@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,10 @@ using UnityEngine.UI;
 
 public class PJohns : MonoBehaviour
 {
-    public int policeticker = 1;
-    public enum playerState { GeneralMovement, Falling, Crouch, Climb, Hide, Whisper, Freeze, MindControl, Frozen, Transition, SendAway, Ledge }
+    public enum playerState { GeneralMovement, Falling, Crouch, Climb, EndClimb, Hide, Whisper, Freeze, MindControl, Frozen, Transition, SendAway, Ledge }
     //Config
     [SerializeField] playerState state;
+    public GameObject target;
     public List<GameObject> pigeonbox;
     [SerializeField] float jumpHeight;
     private float walkSpeed = 2f;
@@ -27,8 +28,13 @@ public class PJohns : MonoBehaviour
     public Vector3 playerVelocity;
     public Vector3 direction;
     public Vector3 ledgeGrabPoint;
+    private Vector3 foodPosA;
+    private Vector3 foodPosB;
     private float gravity = -9.81f;
+    public int foodmove;
     private int doubletapcount = 0;
+    public bool foodCollected = false;
+    public bool zipToPlayer = false;
     public bool isTouchingGround;
     public bool jumppressed = false;
     public bool isCrouching;
@@ -42,12 +48,14 @@ public class PJohns : MonoBehaviour
     private bool ledgecapable;
     private bool topraybool;
     private bool lowraybool;
+    private bool climbdirection;
+    private bool endclimbanimation; 
     private float ledgerayx;
 
 
     //Cached Component References
-    private GameObject gamemanager;
-    public GameObject policeGenerator;
+    private GameObject collectedFood;
+    public GameObject gamemanager;
     private CharacterController controller;
     public BoxCollider myCollider;
     Animator myAnimator;
@@ -60,11 +68,12 @@ public class PJohns : MonoBehaviour
     public Vector3 currentLedge;
     //public List<GameObject> pigeonbox = new List<GameObject>();
     private GameManager gameManager;
-    GameObject crossHair;
+    private GameObject crossHair;
     GameObject hotdog;
     public GameObject currentDumpster = null;
     public GameObject currentLadder = null;
     private float ladderYpos;
+    private float ladderXpos;
 
 
     // Start is called before the first frame update
@@ -78,7 +87,6 @@ public class PJohns : MonoBehaviour
         crossHair = GameObject.Find("crosshair");
         crossHair.GetComponent<SpriteRenderer>().enabled = false;
         hotdog = GameObject.Find("Hotdog");
-        
     }
     private void PlayerState()
     {
@@ -105,6 +113,10 @@ public class PJohns : MonoBehaviour
         if (state == playerState.Climb)
         {
             ClimbLadder();
+        }
+        if (state == playerState.EndClimb)
+        {
+            EndClimb();
         }
         if (state == playerState.Hide)
         {
@@ -229,21 +241,40 @@ public class PJohns : MonoBehaviour
             ledgeGrabPoint = currentLedge;
             state = playerState.Ledge;
         }
-        RaycastHit forwardray;
+        // Ladder Climbing
+        RaycastHit frontray;
+        RaycastHit sideray;
         int layerMask = 1 << 8;
         Vector3 forwardraycast = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        if (Physics.Raycast(forwardraycast, Vector3.forward, out forwardray, .5f, layerMask))
+        if (Physics.Raycast(forwardraycast, raydirection, out sideray, .5f, layerMask))
+        {
+            Debug.DrawRay(forwardraycast, raydirection, Color.cyan);
+            if (sideray.collider.gameObject.tag == "Ladder")
+            {
+                ladderYpos = sideray.point.y;
+                ladderXpos = sideray.point.x;
+                currentLadder = sideray.collider.gameObject;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    holdingLadder = true;
+                    transform.position = new Vector3(transform.position.x, ladderYpos, currentLadder.transform.position.z);
+                    climbdirection = true;
+                    state = playerState.Climb;
+                }
+            }
+        }
+        if (Physics.Raycast(forwardraycast, Vector3.forward, out frontray, .5f, layerMask))
         {
             Debug.DrawRay(forwardraycast, Vector3.forward, Color.cyan);
-            if (forwardray.collider.gameObject.tag == "Dumpster")
+            if (frontray.collider.gameObject.tag == "Dumpster")
             {
                 touchingDumpster = true;
-                currentDumpster = forwardray.collider.gameObject;
+                currentDumpster = frontray.collider.gameObject;
             }
-            if (forwardray.collider.gameObject.tag == "Ladder")
+            if (frontray.collider.gameObject.tag == "Ladder")
             {
-                ladderYpos = forwardray.point.y;
-                currentLadder = forwardray.collider.gameObject;
+                ladderYpos = frontray.point.y;
+                currentLadder = frontray.collider.gameObject;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     holdingLadder = true;
@@ -317,10 +348,9 @@ public class PJohns : MonoBehaviour
     }
     private void Whispering()
     {
-        // if you press and HOLD Q..
+        // Whisper To Hotdog While Holding Q..
         if (Input.GetKey(KeyCode.Q))
         {
-            // Whisper to birds while holding Q
             myAnimator.SetBool("TalkToBirds", true);
             myAnimator.SetBool("Walking", false);
             crossHair.GetComponent<Crosshair>().crosshairstate = Crosshair.CrosshairState.isactive;
@@ -330,16 +360,10 @@ public class PJohns : MonoBehaviour
                 obj.GetComponent<Pigeon>().state = Pigeon.pigeonState.imlistening;
             }
         }
-        // If you let go of Q after hitting nothing, -> General Movement
+        // If you hit NOTHING -> General Movement
         else if (Input.GetKeyUp(KeyCode.Q) && crossHair.GetComponent<Crosshair>().ivehitsomething == false)
         {
             myAnimator.SetBool("TalkToBirds", false);
-            //StartCoroutine(FinishWhispering());
-            //IEnumerator FinishWhispering()
-            //{
-            // yield return new WaitForSeconds(.6f);
-            //state = Player.playerState.GeneralMovement;
-            //}
             state = playerState.GeneralMovement;
             crossHair.GetComponent<Crosshair>().crosshairstate = Crosshair.CrosshairState.isdisabled;
             hotdog.GetComponent<Hotdog>().hotdogState = Hotdog.pigeonState.resetpigeon;
@@ -351,10 +375,13 @@ public class PJohns : MonoBehaviour
         // If you let go of Q after hitting something -> General Movement
         else if (Input.GetKeyUp(KeyCode.Q) && crossHair.GetComponent<Crosshair>().ivehitsomething == true)
         {
-            print("I've hit a thing that's interactable");
             state = playerState.GeneralMovement;
             myAnimator.SetBool("TalkToBirds", false);
-            //pigeonbox[0].GetComponent<Pigeon>().state = Pigeon.pigeonState.followplayer;
+            hotdog.GetComponent<Hotdog>().hotdogState = Hotdog.pigeonState.followcommand;
+            foreach (GameObject obj in pigeonbox)
+            {
+                obj.GetComponent<Pigeon>().state = Pigeon.pigeonState.followcommand;
+            }
         }
     }
     private void LedgeHang()
@@ -382,7 +409,14 @@ public class PJohns : MonoBehaviour
     }
     private void ClimbLadder()
     {
-        myAnimator.SetBool("Climb", true);
+        if (!climbdirection)
+        {
+            myAnimator.SetBool("ClimbFront", true);
+        }
+        else
+        {
+            myAnimator.SetBool("ClimbSide", true);
+        }
         float vertical = Input.GetAxisRaw("Vertical");
         direction = new Vector3(0f, (vertical * climbSpeed), 0f);
         if (direction.magnitude >= 0.1f)
@@ -396,7 +430,44 @@ public class PJohns : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myAnimator.SetBool("Climb", false);
+            myAnimator.SetBool("ClimbFront", false);
+            myAnimator.SetBool("ClimbSide", false);
+            state = playerState.GeneralMovement;
+        }
+    }
+    private void EndClimb()
+    {
+        if (!climbdirection && endclimbanimation == true)
+        {
+            StartCoroutine(FinishClimbFront());
+            endclimbanimation = false;
+        }
+        else if (climbdirection && endclimbanimation == true)
+        {
+            StartCoroutine(FinishClimbSide());
+            endclimbanimation = false;
+        }
+        IEnumerator FinishClimbFront()
+        {
+            myAnimator.SetBool("EndClimbFront", true);
+            yield return new WaitForSeconds(1f);
+            transform.position = new Vector3(transform.position.x, (transform.position.y + .2f), (transform.position.z + .5f));
+            yield return new WaitForSeconds(1f);
+            myAnimator.SetBool("EndClimbFront", false);
+            myAnimator.SetBool("ClimbFront", false);
+            myAnimator.SetBool("ClimbSide", false);
+            state = playerState.GeneralMovement;
+        }
+        IEnumerator FinishClimbSide()
+        {
+            transform.position = new Vector3(transform.position.x + .2f, transform.position.y + .5f, transform.position.z);
+            myAnimator.SetBool("EndClimbSide", true);
+            yield return new WaitForSeconds(.5f);
+            transform.position = new Vector3(transform.position.x + .5f, transform.position.y + .4f, transform.position.z);
+            yield return new WaitForSeconds(.5f);
+            myAnimator.SetBool("EndClimbSide", false);
+            myAnimator.SetBool("ClimbFront", false);
+            myAnimator.SetBool("ClimbSide", false);
             state = playerState.GeneralMovement;
         }
     }
@@ -461,7 +532,8 @@ public class PJohns : MonoBehaviour
     {
         float floorDistanceFromFoot = controller.stepOffset - .2f;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, floorDistanceFromFoot) || controller.isGrounded)
+        int allButAwareness = ~1 << 15;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, floorDistanceFromFoot, allButAwareness) || controller.isGrounded)
         {
             Debug.DrawRay(transform.position, Vector3.down * floorDistanceFromFoot, Color.yellow);
             return true;
@@ -470,30 +542,52 @@ public class PJohns : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "TopLadder")
+        if (collider.gameObject.tag == "TopLadder" && state == playerState.Climb)
         {
-            myAnimator.SetBool("Climb", false);
-            myAnimator.SetBool("EndClimb", true);
-            StartCoroutine(FinishClimb());
-            IEnumerator FinishClimb()
-            {
-                yield return new WaitForSeconds(1f);
-                transform.position = new Vector3(transform.position.x, (transform.position.y + .2f), (transform.position.z + .5f));
-                yield return new WaitForSeconds(.5f);
-                myAnimator.SetBool("EndClimb", false);
-                state = playerState.GeneralMovement;
-            }
+            endclimbanimation = true;
+            state = playerState.EndClimb;
         }
-        if (collider.gameObject.tag == "Danger" && policeticker > 0)
+        if (collider.gameObject.tag == "Danger")
         {
-            policeticker--;
             gamemanager.GetComponent<GameManager>().PoliceTime();
-            Vector3 mypos = new Vector3((transform.position.x + 25f), transform.position.y, transform.position.z);
-            Instantiate(policeGenerator, mypos, Quaternion.identity);
         }
-        if (collider.gameObject.tag == "NotCaptured")
+        // If object is NotCaptured
+        if (collider.gameObject.layer == 11)
         {
             pigeonbox.Add(collider.gameObject);
+            foreach (var obj in pigeonbox)
+            {
+                obj.layer = 12;
+                obj.GetComponent<Pigeon>().state = Pigeon.pigeonState.followplayer;
+            }
+        }
+        if (collider.gameObject.tag == "Food")
+        {
+            foodmove = 2;
+            collectedFood = collider.gameObject;
+            collectedFood.tag = "Untagged";
+            gamemanager.GetComponent<GameManager>().Whoosh();
+            foodPosA = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            foodCollected = true;
+        }
+    }
+    private void CollectFood()
+    {
+        foodPosB = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        if (foodCollected)
+        {
+            collectedFood.transform.position = Vector3.MoveTowards(collectedFood.transform.position, foodPosA, 4 * Time.deltaTime);
+            if (collectedFood.transform.position == foodPosA && foodmove > 0)
+            {
+                foodmove--;
+                foodPosA = foodPosB;
+            }
+            else if (foodmove <= 0)
+            {
+                gamemanager.GetComponent<GameManager>().AddFood();
+                Destroy(collectedFood);
+                foodCollected = false;
+            }
         }
     }
 
@@ -505,5 +599,6 @@ public class PJohns : MonoBehaviour
         //CalculateGravity();
         FlipSprite();
         PlayerState();
+        CollectFood();
     }
 }

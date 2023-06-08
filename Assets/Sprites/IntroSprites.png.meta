@@ -127,6 +127,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,8 +146,8 @@ TextureImporter:
       name: IntroSprites_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 322
+        x: 19
+        y: 321
         width: 8
         height: 31
       alignment: 7
@@ -155,8 +167,8 @@ TextureImporter:
       name: IntroSprites_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 322
+        x: 38
+        y: 321
         width: 13
         height: 28
       alignment: 7
@@ -176,8 +188,8 @@ TextureImporter:
       name: IntroSprites_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 322
+        x: 55
+        y: 321
         width: 14
         height: 28
       alignment: 7
@@ -197,8 +209,8 @@ TextureImporter:
       name: IntroSprites_3
       rect:
         serializedVersion: 2
-        x: 74
-        y: 322
+        x: 72
+        y: 321
         width: 13
         height: 27
       alignment: 7
@@ -218,8 +230,8 @@ TextureImporter:
       name: IntroSprites_4
       rect:
         serializedVersion: 2
-        x: 90
-        y: 322
+        x: 88
+        y: 321
         width: 13
         height: 28
       alignment: 7
@@ -239,8 +251,8 @@ TextureImporter:
       name: IntroSprites_5
       rect:
         serializedVersion: 2
-        x: 106
-        y: 322
+        x: 104
+        y: 321
         width: 13
         height: 28
       alignment: 7
@@ -260,8 +272,8 @@ TextureImporter:
       name: IntroSprites_6
       rect:
         serializedVersion: 2
-        x: 123
-        y: 322
+        x: 121
+        y: 321
         width: 14
         height: 28
       alignment: 7
@@ -281,8 +293,8 @@ TextureImporter:
       name: IntroSprites_7
       rect:
         serializedVersion: 2
-        x: 140
-        y: 322
+        x: 138
+        y: 321
         width: 14
         height: 28
       alignment: 7
@@ -302,8 +314,8 @@ TextureImporter:
       name: IntroSprites_8
       rect:
         serializedVersion: 2
-        x: 158
-        y: 322
+        x: 156
+        y: 321
         width: 14
         height: 28
       alignment: 7
@@ -323,8 +335,8 @@ TextureImporter:
       name: IntroSprites_9
       rect:
         serializedVersion: 2
-        x: 18
-        y: 286
+        x: 16
+        y: 285
         width: 14
         height: 28
       alignment: 7
@@ -344,8 +356,8 @@ TextureImporter:
       name: IntroSprites_10
       rect:
         serializedVersion: 2
-        x: 38
-        y: 286
+        x: 36
+        y: 285
         width: 11
         height: 29
       alignment: 7
@@ -365,8 +377,8 @@ TextureImporter:
       name: IntroSprites_11
       rect:
         serializedVersion: 2
-        x: 57
-        y: 286
+        x: 55
+        y: 285
         width: 13
         height: 31
       alignment: 7
@@ -386,8 +398,8 @@ TextureImporter:
       name: IntroSprites_12
       rect:
         serializedVersion: 2
-        x: 74
-        y: 286
+        x: 72
+        y: 285
         width: 11
         height: 31
       alignment: 7
@@ -407,8 +419,8 @@ TextureImporter:
       name: IntroSprites_13
       rect:
         serializedVersion: 2
-        x: 90
-        y: 286
+        x: 88
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -428,8 +440,8 @@ TextureImporter:
       name: IntroSprites_14
       rect:
         serializedVersion: 2
-        x: 105
-        y: 286
+        x: 103
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -449,8 +461,8 @@ TextureImporter:
       name: IntroSprites_15
       rect:
         serializedVersion: 2
-        x: 121
-        y: 286
+        x: 119
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -470,8 +482,8 @@ TextureImporter:
       name: IntroSprites_16
       rect:
         serializedVersion: 2
-        x: 134
-        y: 286
+        x: 132
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -491,8 +503,8 @@ TextureImporter:
       name: IntroSprites_17
       rect:
         serializedVersion: 2
-        x: 148
-        y: 286
+        x: 146
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -512,8 +524,8 @@ TextureImporter:
       name: IntroSprites_18
       rect:
         serializedVersion: 2
-        x: 162
-        y: 286
+        x: 160
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -533,8 +545,8 @@ TextureImporter:
       name: IntroSprites_19
       rect:
         serializedVersion: 2
-        x: 175
-        y: 286
+        x: 173
+        y: 285
         width: 9
         height: 31
       alignment: 7
@@ -554,8 +566,8 @@ TextureImporter:
       name: IntroSprites_20
       rect:
         serializedVersion: 2
-        x: 190
-        y: 286
+        x: 188
+        y: 285
         width: 14
         height: 29
       alignment: 7
@@ -575,8 +587,8 @@ TextureImporter:
       name: IntroSprites_21
       rect:
         serializedVersion: 2
-        x: 208
-        y: 286
+        x: 206
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -596,8 +608,8 @@ TextureImporter:
       name: IntroSprites_22
       rect:
         serializedVersion: 2
-        x: 234
-        y: 286
+        x: 232
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -617,8 +629,8 @@ TextureImporter:
       name: IntroSprites_23
       rect:
         serializedVersion: 2
-        x: 259
-        y: 286
+        x: 257
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -638,8 +650,8 @@ TextureImporter:
       name: IntroSprites_24
       rect:
         serializedVersion: 2
-        x: 284
-        y: 286
+        x: 282
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -659,8 +671,8 @@ TextureImporter:
       name: IntroSprites_25
       rect:
         serializedVersion: 2
-        x: 308
-        y: 286
+        x: 306
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -680,8 +692,8 @@ TextureImporter:
       name: IntroSprites_26
       rect:
         serializedVersion: 2
-        x: 331
-        y: 286
+        x: 329
+        y: 285
         width: 21
         height: 29
       alignment: 7
@@ -701,8 +713,8 @@ TextureImporter:
       name: IntroSprites_27
       rect:
         serializedVersion: 2
-        x: 357
-        y: 286
+        x: 355
+        y: 285
         width: 18
         height: 29
       alignment: 7
@@ -722,8 +734,8 @@ TextureImporter:
       name: IntroSprites_28
       rect:
         serializedVersion: 2
-        x: 18
-        y: 250
+        x: 16
+        y: 249
         width: 18
         height: 29
       alignment: 7
@@ -743,8 +755,8 @@ TextureImporter:
       name: IntroSprites_29
       rect:
         serializedVersion: 2
-        x: 44
-        y: 250
+        x: 42
+        y: 249
         width: 18
         height: 29
       alignment: 7
@@ -764,8 +776,8 @@ TextureImporter:
       name: IntroSprites_30
       rect:
         serializedVersion: 2
-        x: 66
-        y: 250
+        x: 64
+        y: 249
         width: 14
         height: 29
       alignment: 7
@@ -785,8 +797,8 @@ TextureImporter:
       name: IntroSprites_31
       rect:
         serializedVersion: 2
-        x: 85
-        y: 250
+        x: 83
+        y: 249
         width: 12
         height: 29
       alignment: 7
@@ -806,8 +818,8 @@ TextureImporter:
       name: IntroSprites_32
       rect:
         serializedVersion: 2
-        x: 103
-        y: 250
+        x: 101
+        y: 249
         width: 11
         height: 30
       alignment: 7
@@ -827,8 +839,8 @@ TextureImporter:
       name: IntroSprites_33
       rect:
         serializedVersion: 2
-        x: 121
-        y: 250
+        x: 119
+        y: 249
         width: 12
         height: 30
       alignment: 7
@@ -848,8 +860,8 @@ TextureImporter:
       name: IntroSprites_34
       rect:
         serializedVersion: 2
-        x: 140
-        y: 250
+        x: 138
+        y: 249
         width: 12
         height: 30
       alignment: 7
@@ -869,8 +881,8 @@ TextureImporter:
       name: IntroSprites_35
       rect:
         serializedVersion: 2
-        x: 159
-        y: 250
+        x: 157
+        y: 249
         width: 11
         height: 30
       alignment: 7
@@ -890,8 +902,8 @@ TextureImporter:
       name: IntroSprites_36
       rect:
         serializedVersion: 2
-        x: 176
-        y: 250
+        x: 174
+        y: 249
         width: 11
         height: 30
       alignment: 7
@@ -911,8 +923,8 @@ TextureImporter:
       name: IntroSprites_37
       rect:
         serializedVersion: 2
-        x: 192
-        y: 250
+        x: 190
+        y: 249
         width: 11
         height: 30
       alignment: 7
@@ -932,8 +944,8 @@ TextureImporter:
       name: IntroSprites_38
       rect:
         serializedVersion: 2
-        x: 207
-        y: 250
+        x: 205
+        y: 249
         width: 11
         height: 30
       alignment: 7
@@ -953,8 +965,8 @@ TextureImporter:
       name: IntroSprites_39
       rect:
         serializedVersion: 2
-        x: 219
-        y: 250
+        x: 217
+        y: 249
         width: 14
         height: 30
       alignment: 7
@@ -974,8 +986,8 @@ TextureImporter:
       name: IntroSprites_40
       rect:
         serializedVersion: 2
-        x: 235
-        y: 250
+        x: 233
+        y: 249
         width: 18
         height: 30
       alignment: 7
@@ -995,8 +1007,8 @@ TextureImporter:
       name: IntroSprites_41
       rect:
         serializedVersion: 2
-        x: 261
-        y: 250
+        x: 259
+        y: 249
         width: 12
         height: 30
       alignment: 7
@@ -1016,8 +1028,8 @@ TextureImporter:
       name: IntroSprites_42
       rect:
         serializedVersion: 2
-        x: 281
-        y: 250
+        x: 279
+        y: 249
         width: 12
         height: 30
       alignment: 7
@@ -1037,8 +1049,8 @@ TextureImporter:
       name: IntroSprites_43
       rect:
         serializedVersion: 2
-        x: 298
-        y: 250
+        x: 296
+        y: 249
         width: 19
         height: 30
       alignment: 7
@@ -1058,8 +1070,8 @@ TextureImporter:
       name: IntroSprites_44
       rect:
         serializedVersion: 2
-        x: 325
-        y: 250
+        x: 323
+        y: 249
         width: 17
         height: 30
       alignment: 7
@@ -1079,8 +1091,8 @@ TextureImporter:
       name: IntroSprites_45
       rect:
         serializedVersion: 2
-        x: 349
-        y: 250
+        x: 347
+        y: 249
         width: 19
         height: 27
       alignment: 7
@@ -1100,8 +1112,8 @@ TextureImporter:
       name: IntroSprites_46
       rect:
         serializedVersion: 2
-        x: 20
-        y: 214
+        x: 18
+        y: 213
         width: 19
         height: 27
       alignment: 7
@@ -1121,8 +1133,8 @@ TextureImporter:
       name: IntroSprites_47
       rect:
         serializedVersion: 2
-        x: 45
-        y: 214
+        x: 43
+        y: 213
         width: 18
         height: 19
       alignment: 7
@@ -1142,8 +1154,8 @@ TextureImporter:
       name: IntroSprites_48
       rect:
         serializedVersion: 2
-        x: 66
-        y: 214
+        x: 64
+        y: 213
         width: 26
         height: 13
       alignment: 7
@@ -1163,8 +1175,8 @@ TextureImporter:
       name: IntroSprites_49
       rect:
         serializedVersion: 2
-        x: 97
-        y: 214
+        x: 95
+        y: 213
         width: 26
         height: 13
       alignment: 7
@@ -1184,8 +1196,8 @@ TextureImporter:
       name: IntroSprites_50
       rect:
         serializedVersion: 2
-        x: 128
-        y: 214
+        x: 126
+        y: 213
         width: 23
         height: 13
       alignment: 7
@@ -1205,8 +1217,8 @@ TextureImporter:
       name: IntroSprites_51
       rect:
         serializedVersion: 2
-        x: 155
-        y: 214
+        x: 153
+        y: 213
         width: 23
         height: 16
       alignment: 7
@@ -1226,8 +1238,8 @@ TextureImporter:
       name: IntroSprites_52
       rect:
         serializedVersion: 2
-        x: 183
-        y: 214
+        x: 181
+        y: 213
         width: 23
         height: 16
       alignment: 7
@@ -1247,8 +1259,8 @@ TextureImporter:
       name: IntroSprites_53
       rect:
         serializedVersion: 2
-        x: 210
-        y: 214
+        x: 208
+        y: 213
         width: 24
         height: 15
       alignment: 7
@@ -1268,8 +1280,8 @@ TextureImporter:
       name: IntroSprites_54
       rect:
         serializedVersion: 2
-        x: 237
-        y: 214
+        x: 235
+        y: 213
         width: 22
         height: 17
       alignment: 7
@@ -1289,8 +1301,8 @@ TextureImporter:
       name: IntroSprites_55
       rect:
         serializedVersion: 2
-        x: 266
-        y: 214
+        x: 264
+        y: 213
         width: 26
         height: 17
       alignment: 7
@@ -1310,8 +1322,8 @@ TextureImporter:
       name: IntroSprites_56
       rect:
         serializedVersion: 2
-        x: 298
-        y: 214
+        x: 296
+        y: 213
         width: 26
         height: 17
       alignment: 7
@@ -1331,8 +1343,8 @@ TextureImporter:
       name: IntroSprites_57
       rect:
         serializedVersion: 2
-        x: 335
-        y: 214
+        x: 333
+        y: 213
         width: 17
         height: 17
       alignment: 7
@@ -1352,8 +1364,8 @@ TextureImporter:
       name: IntroSprites_58
       rect:
         serializedVersion: 2
-        x: 353
-        y: 214
+        x: 351
+        y: 213
         width: 24
         height: 17
       alignment: 7
@@ -1373,8 +1385,8 @@ TextureImporter:
       name: IntroSprites_59
       rect:
         serializedVersion: 2
-        x: 106
-        y: 180
+        x: 104
+        y: 179
         width: 9
         height: 31
       alignment: 7
@@ -1394,8 +1406,8 @@ TextureImporter:
       name: IntroSprites_60
       rect:
         serializedVersion: 2
-        x: 18
-        y: 142
+        x: 16
+        y: 141
         width: 8
         height: 32
       alignment: 7
@@ -1415,8 +1427,8 @@ TextureImporter:
       name: IntroSprites_61
       rect:
         serializedVersion: 2
-        x: 32
-        y: 142
+        x: 30
+        y: 141
         width: 10
         height: 32
       alignment: 7
@@ -1436,8 +1448,8 @@ TextureImporter:
       name: IntroSprites_62
       rect:
         serializedVersion: 2
-        x: 45
-        y: 142
+        x: 43
+        y: 141
         width: 11
         height: 32
       alignment: 7
@@ -1457,8 +1469,8 @@ TextureImporter:
       name: IntroSprites_63
       rect:
         serializedVersion: 2
-        x: 58
-        y: 142
+        x: 56
+        y: 141
         width: 12
         height: 32
       alignment: 7
@@ -1478,8 +1490,8 @@ TextureImporter:
       name: IntroSprites_64
       rect:
         serializedVersion: 2
-        x: 7
-        y: 322
+        x: 5
+        y: 321
         width: 8
         height: 31
       alignment: 7
@@ -1499,8 +1511,8 @@ TextureImporter:
       name: IntroSprites_65
       rect:
         serializedVersion: 2
-        x: 308
-        y: 316
+        x: 306
+        y: 315
         width: 21
         height: 29
       alignment: 7
@@ -1520,8 +1532,8 @@ TextureImporter:
       name: IntroSprites_66
       rect:
         serializedVersion: 2
-        x: 66
-        y: 197
+        x: 64
+        y: 196
         width: 26
         height: 13
       alignment: 7
@@ -1541,8 +1553,8 @@ TextureImporter:
       name: IntroSprites_67
       rect:
         serializedVersion: 2
-        x: 286
-        y: 315
+        x: 284
+        y: 314
         width: 18
         height: 29
       alignment: 7
@@ -1562,8 +1574,8 @@ TextureImporter:
       name: IntroSprites_68
       rect:
         serializedVersion: 2
-        x: 82
-        y: 142
+        x: 80
+        y: 141
         width: 8
         height: 32
       alignment: 7
@@ -1583,9 +1595,9 @@ TextureImporter:
       name: IntroSprites_69
       rect:
         serializedVersion: 2
-        x: 98
-        y: 142
-        width: 12
+        x: 96
+        y: 141
+        width: 15
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1604,9 +1616,9 @@ TextureImporter:
       name: IntroSprites_70
       rect:
         serializedVersion: 2
-        x: 115
-        y: 142
-        width: 13
+        x: 113
+        y: 141
+        width: 16
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1625,9 +1637,9 @@ TextureImporter:
       name: IntroSprites_71
       rect:
         serializedVersion: 2
-        x: 133
-        y: 142
-        width: 15
+        x: 131
+        y: 141
+        width: 18
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1646,9 +1658,9 @@ TextureImporter:
       name: IntroSprites_72
       rect:
         serializedVersion: 2
-        x: 153
-        y: 142
-        width: 15
+        x: 151
+        y: 141
+        width: 18
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1667,9 +1679,9 @@ TextureImporter:
       name: IntroSprites_73
       rect:
         serializedVersion: 2
-        x: 175
-        y: 142
-        width: 12
+        x: 173
+        y: 141
+        width: 15
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1688,9 +1700,9 @@ TextureImporter:
       name: IntroSprites_74
       rect:
         serializedVersion: 2
-        x: 195
-        y: 142
-        width: 11
+        x: 193
+        y: 141
+        width: 14
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1709,9 +1721,9 @@ TextureImporter:
       name: IntroSprites_75
       rect:
         serializedVersion: 2
-        x: 213
-        y: 142
-        width: 12
+        x: 211
+        y: 141
+        width: 15
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1730,9 +1742,9 @@ TextureImporter:
       name: IntroSprites_76
       rect:
         serializedVersion: 2
-        x: 232
-        y: 142
-        width: 13
+        x: 230
+        y: 141
+        width: 16
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1751,9 +1763,9 @@ TextureImporter:
       name: IntroSprites_77
       rect:
         serializedVersion: 2
-        x: 254
-        y: 142
-        width: 11
+        x: 252
+        y: 141
+        width: 14
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1772,9 +1784,9 @@ TextureImporter:
       name: IntroSprites_78
       rect:
         serializedVersion: 2
-        x: 274
-        y: 142
-        width: 11
+        x: 272
+        y: 141
+        width: 14
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1793,9 +1805,9 @@ TextureImporter:
       name: IntroSprites_79
       rect:
         serializedVersion: 2
-        x: 7
-        y: 106
-        width: 10
+        x: 5
+        y: 105
+        width: 13
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1814,9 +1826,9 @@ TextureImporter:
       name: IntroSprites_80
       rect:
         serializedVersion: 2
-        x: 24
-        y: 106
-        width: 12
+        x: 22
+        y: 105
+        width: 14
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1835,9 +1847,9 @@ TextureImporter:
       name: IntroSprites_81
       rect:
         serializedVersion: 2
-        x: 42
-        y: 106
-        width: 13
+        x: 40
+        y: 105
+        width: 16
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1856,9 +1868,9 @@ TextureImporter:
       name: IntroSprites_82
       rect:
         serializedVersion: 2
-        x: 62
-        y: 106
-        width: 13
+        x: 60
+        y: 105
+        width: 16
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1877,9 +1889,9 @@ TextureImporter:
       name: IntroSprites_83
       rect:
         serializedVersion: 2
-        x: 84
-        y: 106
-        width: 10
+        x: 82
+        y: 105
+        width: 13
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1898,9 +1910,9 @@ TextureImporter:
       name: IntroSprites_84
       rect:
         serializedVersion: 2
-        x: 104
-        y: 106
-        width: 9
+        x: 102
+        y: 105
+        width: 12
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1919,9 +1931,9 @@ TextureImporter:
       name: IntroSprites_85
       rect:
         serializedVersion: 2
-        x: 122
-        y: 106
-        width: 10
+        x: 120
+        y: 105
+        width: 13
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1940,9 +1952,9 @@ TextureImporter:
       name: IntroSprites_86
       rect:
         serializedVersion: 2
-        x: 141
-        y: 106
-        width: 11
+        x: 139
+        y: 105
+        width: 14
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1961,9 +1973,9 @@ TextureImporter:
       name: IntroSprites_87
       rect:
         serializedVersion: 2
-        x: 163
-        y: 106
-        width: 9
+        x: 161
+        y: 105
+        width: 12
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1982,9 +1994,9 @@ TextureImporter:
       name: IntroSprites_88
       rect:
         serializedVersion: 2
-        x: 183
-        y: 106
-        width: 9
+        x: 181
+        y: 105
+        width: 12
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2003,9 +2015,9 @@ TextureImporter:
       name: IntroSprites_89
       rect:
         serializedVersion: 2
-        x: 200
-        y: 106
-        width: 17
+        x: 198
+        y: 105
+        width: 20
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2024,9 +2036,9 @@ TextureImporter:
       name: IntroSprites_90
       rect:
         serializedVersion: 2
-        x: 221
-        y: 106
-        width: 17
+        x: 219
+        y: 105
+        width: 20
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2045,9 +2057,9 @@ TextureImporter:
       name: IntroSprites_91
       rect:
         serializedVersion: 2
-        x: 243
-        y: 106
-        width: 17
+        x: 241
+        y: 105
+        width: 20
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2066,9 +2078,9 @@ TextureImporter:
       name: IntroSprites_92
       rect:
         serializedVersion: 2
-        x: 263
-        y: 106
-        width: 17
+        x: 261
+        y: 105
+        width: 20
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2087,9 +2099,9 @@ TextureImporter:
       name: IntroSprites_93
       rect:
         serializedVersion: 2
-        x: 283
-        y: 106
-        width: 15
+        x: 281
+        y: 105
+        width: 18
         height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2108,8 +2120,8 @@ TextureImporter:
       name: IntroSprites_94
       rect:
         serializedVersion: 2
-        x: 305
-        y: 106
+        x: 303
+        y: 105
         width: 12
         height: 32
       alignment: 7
@@ -2121,6 +2133,636 @@ TextureImporter:
       bones: []
       spriteID: 6bc33a7cc79b4ce4d98389658116fe7c
       internalID: 251977859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_95
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 105
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77417032bfdb5f74191f137493c47e2e
+      internalID: -1644671468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_96
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 105
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c15274c68ff594494a2bf562891618
+      internalID: 655932113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_97
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 179
+        width: 26
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e4c84032f6851d448a2ea686e77bcdd
+      internalID: -805813094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_98
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 179
+        width: 28
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf53d45da1513c4e9606519f71d484a
+      internalID: -1351158042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_99
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 179
+        width: 16
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef702d75b8de744b8f55a3b6ddd8e05
+      internalID: 531407289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_100
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 179
+        width: 19
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a21619e30752449881f505c9e8ee6a
+      internalID: -530847246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_101
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 179
+        width: 12
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520cd3b6ac848c34daa05d74f2f6f52c
+      internalID: 138840757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_102
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 179
+        width: 9
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c77f5104e90f845a16104cac9aff94
+      internalID: -828832976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_103
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 179
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae4857c841d6ae42a35eccfd78d471c
+      internalID: -1028043592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_104
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 179
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60e23645e2b1514dada5e8906176909
+      internalID: -1103772130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_105
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 179
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fbfd3e5725e2d4495d4298dd0c1f68
+      internalID: 1219938546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_106
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 179
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2acb145fd52934b4bb45383934710b94
+      internalID: 1116930883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_107
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 179
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c608046303f575459e311bf99b70201
+      internalID: -1506587797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_108
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 141
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39f2b23b5c3967458e1608c030c3fdd
+      internalID: 861590105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_109
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 141
+        width: 18
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe83a96466a8d0e478a3d8882ecd7636
+      internalID: 136643756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_110
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 141
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98960a4bda5c16418d7bb3f681cbe84
+      internalID: 2073494366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_111
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 141
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2904ff2e36bc3749bad5ec6d731f710
+      internalID: 1064280189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_112
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 78
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228a076dd4b35ff4995d17d1523c1fd9
+      internalID: 333440591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_113
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 78
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db13f7e5c3628974c92d0747ed81e395
+      internalID: 2053219207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_114
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 78
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c28db7074558894fbc5b7532dd19470
+      internalID: 704583755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_115
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 78
+        width: 18
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0180d924af01ab4bb097f1c766548e9
+      internalID: -760662022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_116
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 78
+        width: 18
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548f0451e751a81478cf123d0634ba6e
+      internalID: 764705412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_117
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 78
+        width: 21
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc25f098f7d27f4caac240890acac6d
+      internalID: 2098955004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_118
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 78
+        width: 21
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57472dc9405d1e4cac3577a66267675
+      internalID: -2080523663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_119
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 78
+        width: 18
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08f69c8e3468a94d9871e0e830a6197
+      internalID: 553242840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_120
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 78
+        width: 19
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ad3f3123e269c4b8010f737a3b655d
+      internalID: -232863376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_121
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 78
+        width: 18
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fa9121a0eb37c43a914c0ca53cf0ad
+      internalID: -1663123322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_122
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 78
+        width: 18
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 375f2b39100b476448ee8180c6cdaa1a
+      internalID: 1673191550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_123
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 78
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ba6957124c5c648bdac0b3036e9d09
+      internalID: -1579785950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IntroSprites_124
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 50
+        width: 21
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412ee243bb119894791956f6a55c8e7e
+      internalID: 400150030
       vertices: []
       indices: 
       edges: []
@@ -2138,6 +2780,7 @@ TextureImporter:
     nameFileIdTable:
       IntroSprites_72: -1752947015
       IntroSprites_43: -1367158769
+      IntroSprites_113: 2053219207
       IntroSprites_74: -856291737
       IntroSprites_60: 11413871
       IntroSprites_69: -386573709
@@ -2149,14 +2792,23 @@ TextureImporter:
       IntroSprites_26: 51227923
       IntroSprites_63: 1380087236
       IntroSprites_81: -1603395814
+      IntroSprites_112: 333440591
+      IntroSprites_100: -530847246
+      IntroSprites_107: -1506587797
       IntroSprites_53: 196310998
       IntroSprites_15: -477284618
       IntroSprites_40: 1677752597
       IntroSprites_82: 1327695408
       IntroSprites_1: 1677731986
+      IntroSprites_96: 655932113
+      IntroSprites_123: -1579785950
       IntroSprites_77: 1621622955
       IntroSprites_85: 791228287
+      IntroSprites_106: 1116930883
+      IntroSprites_120: -232863376
       IntroSprites_66: 1101857333
+      IntroSprites_109: 136643756
+      IntroSprites_97: -805813094
       IntroSprites_4: -572832862
       IntroSprites_91: 947742432
       IntroSprites_17: 587646654
@@ -2164,6 +2816,7 @@ TextureImporter:
       IntroSprites_51: 653195556
       IntroSprites_61: -827931947
       IntroSprites_19: 901431552
+      IntroSprites_118: -2080523663
       IntroSprites_55: 816857384
       IntroSprites_37: -2052892805
       IntroSprites_21: 1171234782
@@ -2171,23 +2824,32 @@ TextureImporter:
       IntroSprites_73: 1613891840
       IntroSprites_92: 1388007532
       IntroSprites_3: 327110385
-      IntroSprites_88: -1062973976
+      IntroSprites_124: 400150030
+      IntroSprites_98: -1351158042
       IntroSprites_32: -784950533
       IntroSprites_64: -1089695061
+      IntroSprites_88: -1062973976
       IntroSprites_86: 1255997952
       IntroSprites_80: -1634490075
       IntroSprites_46: 1824094716
       IntroSprites_24: 192640665
+      IntroSprites_110: 2073494366
+      IntroSprites_119: 553242840
       IntroSprites_75: 1880931054
+      IntroSprites_117: 2098955004
       IntroSprites_12: 1376002972
       IntroSprites_16: 1497068089
       IntroSprites_89: -291525362
-      IntroSprites_39: -1339457623
-      IntroSprites_70: -1585779127
       IntroSprites_94: 251977859
+      IntroSprites_70: -1585779127
+      IntroSprites_111: 1064280189
+      IntroSprites_114: 704583755
       IntroSprites_33: 738783192
       IntroSprites_54: 973739682
       IntroSprites_76: 464562218
+      IntroSprites_39: -1339457623
+      IntroSprites_101: 138840757
+      IntroSprites_115: -760662022
       IntroSprites_29: 1787325109
       IntroSprites_68: 563590543
       IntroSprites_13: -851668088
@@ -2198,14 +2860,19 @@ TextureImporter:
       IntroSprites_58: -1413288380
       IntroSprites_93: -822596211
       IntroSprites_14: -239577558
+      IntroSprites_121: -1663123322
       IntroSprites_90: -794222590
       IntroSprites_44: -378601601
       IntroSprites_9: 1371869716
       IntroSprites_28: -1828744170
+      IntroSprites_105: 1219938546
       IntroSprites_52: 268890464
       IntroSprites_30: -1887296359
+      IntroSprites_102: -828832976
+      IntroSprites_108: 861590105
       IntroSprites_0: -2021605507
       IntroSprites_18: -1420504902
+      IntroSprites_116: 764705412
       IntroSprites_50: -977127488
       IntroSprites_38: -1249904087
       IntroSprites_62: 203428514
@@ -2215,16 +2882,21 @@ TextureImporter:
       IntroSprites_71: 713342750
       IntroSprites_79: -1137122270
       IntroSprites_8: -414736498
+      IntroSprites_99: 531407289
       IntroSprites_22: -2046415528
       IntroSprites_36: 1952798275
       IntroSprites_78: 1736918595
       IntroSprites_65: 2041052001
       IntroSprites_34: 747988702
       IntroSprites_67: -1657300746
+      IntroSprites_122: 1673191550
+      IntroSprites_103: -1028043592
       IntroSprites_20: 745508207
       IntroSprites_2: -118011882
       IntroSprites_5: -659035461
       IntroSprites_87: 570914311
+      IntroSprites_104: -1103772130
+      IntroSprites_95: -1644671468
       IntroSprites_49: 299776127
       IntroSprites_6: -1930536083
       IntroSprites_25: -376428050

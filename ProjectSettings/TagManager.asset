@@ -19,6 +19,9 @@ TagManager:
   - HDVendor
   - Carryable
   - TrafficGuy
+  - Food
+  - DayLight
+  - Pigeon
   layers:
   - Default
   - TransparentFX
@@ -34,8 +37,8 @@ TagManager:
   - NotCaptured
   - Captured
   - Background
-  - 
-  - 
+  - OffLinkMesh
+  - ControlOfficer
   - 
   - 
   - 

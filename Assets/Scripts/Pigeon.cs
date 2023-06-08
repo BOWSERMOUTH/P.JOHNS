@@ -94,7 +94,6 @@ public class Pigeon : MonoBehaviour
         myAnimator.SetBool("Walk", false);
         myAnimator.SetBool("PigeonListen", true);
         gravity = 0f;
-        target = player;
         pigeon.Move(stop);
     }
     private void ResetPigeon()
@@ -119,10 +118,8 @@ public class Pigeon : MonoBehaviour
         }
         if (other.tag == "Player")
         {
-            player = GameObject.Find("PJohns");
+            player = other.gameObject;
             target = player;
-            state = pigeonState.followplayer;
-            gameObject.layer = 12;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -136,6 +133,14 @@ public class Pigeon : MonoBehaviour
     // Pigeon Faces Target
     private void LookAtTarget()
     {
+        if (player.GetComponent<PJohns>().target != null)
+        {
+            target = player.GetComponent<PJohns>().target.gameObject;
+        }
+        else
+        {
+            target = player;
+        }
         if (transform.position.x < target.transform.position.x)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
@@ -185,6 +190,7 @@ public class Pigeon : MonoBehaviour
         {
             if (isTouchingGround && !jumppressed)
             {
+                myAnimator.SetBool("Walk", false);
                 hopDistance.x = Random.Range(5f, 8f);
                 hopDistance.z = 2f;
                 hopDistance.y += Mathf.Sqrt(2.5f * -1.0f * gravity);
@@ -228,11 +234,13 @@ public class Pigeon : MonoBehaviour
     private void FollowCommand()
     {
         LookAtTarget();
+        myAnimator.SetBool("PigeonListen", false);
         myAnimator.SetBool("Idle", false);
         myAnimator.SetBool("Walk", false);
         myAnimator.SetBool("Flying", true);
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, pigeonSpeed * Time.deltaTime);
     }
+
     private bool IsGrounded()
     {
         float floorDistanceFromFoot = pigeon.stepOffset - .25f;

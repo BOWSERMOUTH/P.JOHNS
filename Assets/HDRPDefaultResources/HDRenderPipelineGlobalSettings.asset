@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781cc897cf8675041a751163b51f97dd, type: 3}
   m_Name: HDRenderPipelineGlobalSettings
   m_EditorClassIdentifier: 
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: 4a321bdef5de0d74abaac0682080acc1,
+  m_DefaultVolumeProfile: {fileID: 11400000, guid: 14b392ee213d25a48b1feddbd9f5a9be,
     type: 2}
   m_LookDevVolumeProfile: {fileID: 11400000, guid: 8bedbf55ed7b5bc4cb90163c570a7070,
     type: 2}
@@ -87,6 +87,7 @@ MonoBehaviour:
   decalLayerName7: Decal Layer 7
   shaderVariantLogLevel: 0
   lensAttenuationMode: 0
+  colorGradingSpace: 0
   diffusionProfileSettingsList:
   - {fileID: 11400000, guid: 79e6b6ea1324bf247a94f8fd378ced43, type: 2}
   - {fileID: 11400000, guid: 4691bb53b7df3b74985e131b05543800, type: 2}

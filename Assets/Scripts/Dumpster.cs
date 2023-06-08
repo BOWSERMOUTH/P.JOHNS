@@ -17,7 +17,6 @@ public class Dumpster : MonoBehaviour
     public void IntoDumpster()
     {
         myAnimator.SetBool("GetIn", true);
-        print("get in was true");
     }
     public void OutDumpster()
     {
