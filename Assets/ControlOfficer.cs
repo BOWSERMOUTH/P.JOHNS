@@ -10,13 +10,34 @@ public class ControlOfficer : MonoBehaviour
     public enum controlState { Searching, Stop, Approach, Strike, }
     [SerializeField] controlState state;
     [SerializeField] List<AudioClip> clips;
-    private bool startSearching = true;
+    private bool startedSearching = true;
+    private bool startedSpotting = false;
+    private bool startedApproaching = false;
+    private bool atApproachPoint = false;
 
     // Control Officer Components
     public NavMeshAgent myNma;
+    private Animator myAnimator;
+    private SpriteRenderer myspriteren;
+    private AudioSource myAudio;
+    public float sightrotation;
+    public bool spotted = false;
+    public GameObject currentTarget = null;
+
+    // Other GameObject References
+    private GameObject player;
+    private GameManager gameman;
+    [SerializeField] GameObject targetPosition;
 
     void Start()
     {
+        myAnimator = gameObject.GetComponentInChildren<Animator>();
+        targetPosition = GameObject.Find("TeleporterEnd");
+        myspriteren = GetComponentInChildren<SpriteRenderer>();
+        myAudio = gameObject.GetComponentInChildren<AudioSource>();
+        gameman = GameObject.Find("GameManager").GetComponent<GameManager>();
+        myNma = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("PJohns");
     }
     private void ControlOfficerState()
     {
@@ -24,7 +45,7 @@ public class ControlOfficer : MonoBehaviour
         if (state == controlState.Searching)
         {
             // ONLY HAPPENS ONCE
-            if (startSearching)
+            if (startedSearching)
             {
                 // ControlOfficer is on the move to destination
                 myNma.isStopped = false;
@@ -33,7 +54,7 @@ public class ControlOfficer : MonoBehaviour
                 myNma.speed = 1.65f;
                 // Set Destination To TeleporterEnd
                 myNma.SetDestination(targetPosition.transform.position);
-                startSearching = false;
+                startedSearching = false;
             }
             // Police Audio Matches PoliceAmbience Audio
             myAudio.time = gameman.GetComponent<AudioSource>().time;
@@ -53,57 +74,24 @@ public class ControlOfficer : MonoBehaviour
             // 3 fanned out Rays looking for PJohns
             GeneralSight();
         }
-        // SPOTTED
-        if (state == policeState.Spotted)
-        {
-            // ONLY HAPPENS ONCE
-            if (startedSpotting)
-            {
-                // If spotted, stop PoliceForce audio and stop walking
-                myAudio.Pause();
-                myNma.isStopped = true;
-                myAnimator.SetBool("Walking", false);
-                startedSpotting = false;
-            }
-            if (spotted)
-            {
-                StartCoroutine(SpottingTimer());
-                IEnumerator SpottingTimer()
-                {
-                    spotted = false;
-                    yield return new WaitForSeconds(3);
-                    myAnimator.SetBool("Walking", true);
-                    startedInvestigating = true;
-                    state = policeState.Investigating;
-                }
-            }
-            // Shoots a raycast that always looks at PJohns, but will hit Default and Interactable objects inbetween. 
-            HonedSight();
-        }
         // INVESTIGATING
-        if (state == policeState.Investigating)
+        if (state == controlState.Approach)
         {
             // ONLY PLAYS ONCE
-            if (startedInvestigating)
+            if (startedApproaching)
             {
                 myAudio.pitch = .3f;
                 myAudio.Play();
                 myAnimator.speed = .5f;
-                myNma.SetDestination(lastSpottedPoint);
+                myNma.SetDestination(targetPosition.transform.position);
                 myNma.speed = 1f;
                 myNma.isStopped = false;
-                atInvestigationPoint = true;
-                startedInvestigating = false;
+                atApproachPoint = true;
+                startedApproaching = false;
             }
-            if (spotlightTime >= 3f)
-            {
-                myAudio.pitch = 1f;
-                myAudio.PlayOneShot(clips[0], 1f);
-                state = policeState.Caught;
-            }
-            // If you get to investigation place and haven't seen PJohns, wait 3s & return to Searching
-            float distance = Vector3.Distance(transform.position, lastSpottedPoint);
-            if (distance <= .3f && atInvestigationPoint)
+            // If you get to approach place and haven't seen Pigeons, wait 3s & return to Searching
+            float distance = Vector3.Distance(transform.position, targetPosition.transform.position);
+            if (distance <= .3f && atApproachPoint)
             {
                 myNma.isStopped = true;
                 myAnimator.SetBool("Walking", false);
@@ -114,18 +102,50 @@ public class ControlOfficer : MonoBehaviour
                     myAudio.pitch = 1f;
                     gameman.UnSpotted();
                     startedSearching = true;
-                    state = policeState.Searching;
+                    state = controlState.Searching;
                 }
-                atInvestigationPoint = false;
+                atApproachPoint = false;
             }
-            HonedSight();
         }
         // CAUGHT
-        if (state == policeState.Caught)
+        if (state == controlState.Strike)
         {
-            myAnimator.SetBool("Whistle", true);
-            myNma.SetDestination(player.transform.position);
-            spotlightTime = 0f;
+
+        }
+    }
+    private void GeneralSight()
+    {
+        // Creates 3 Raycasts fanning out in front of him
+        RaycastHit hit;
+        LayerMask defaultLayerMask = 1 << 0;
+        LayerMask playerLayerMask = 1 << 6;
+        LayerMask interLayerMask = 1 << 8;
+        LayerMask mask = defaultLayerMask | playerLayerMask | interLayerMask;
+        Vector3 rayOrigin = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        Vector3 currentPos = Vector3.back * 3f;
+        sightrotation += 520 * Time.deltaTime;
+        if (sightrotation >= 180)
+        {
+            sightrotation = 0f;
+        }
+        currentPos = Quaternion.Euler(0, sightrotation, 0) * currentPos;
+        Debug.DrawRay(rayOrigin, currentPos, Color.green);
+        // If the raycast hits Player, go to SPOTTED mode. 
+        if (Physics.Raycast(rayOrigin, currentPos, out hit, 3f, mask))
+        {
+            if (hit.transform.tag == "Pigeon")
+            {
+                spotted = true;
+                currentTarget = hit.transform.gameObject;
+                gameman.Spotted();
+                myAudio.Play();
+                startedSpotting = true;
+                state = controlState.Stop;
+            }
+        }
+        else
+        {
+            spotted = false;
         }
     }
 }
