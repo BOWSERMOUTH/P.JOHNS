@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Vector3 playerSpawnPoint;
     public bool lowervolume = false;
     public int policeticker = 1;
+    public int controlticker = 1;
 
     [Header("Time Info")]
     public float sunRotationTime = 348;
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         pigeonText = GameObject.Find("PigeonText").GetComponent<TMP_Text>();
         foodText = GameObject.Find("FoodText").GetComponent<TMP_Text>();
         nightlightobjects = GameObject.FindGameObjectsWithTag("NightLight");
+        ControlOfficerTime();
     }
     public void PoliceTime()
     {
@@ -92,13 +94,20 @@ public class GameManager : MonoBehaviour
         Vector3 playerpos = new Vector3((player.transform.position.x + 25f), transform.position.y, transform.position.z);
         Instantiate(gameObjects[4], playerpos, Quaternion.identity);
         myaudio.clip = clips[0];
+        myaudio.PlayOneShot(clips[0], 1f);
         myaudio.loop = true;
+    }
+    public void ControlOfficerTime()
+    {
+        controlticker--;
+        myaudio.clip = clips[1];
         myaudio.Play();
+        myaudio.loop = true;
     }
     public void Spotted()
     {
         myaudio.Stop();
-        myaudio.PlayOneShot(clips[1], 1f);
+        myaudio.PlayOneShot(clips[0], 1f);
     }
     public void UnSpotted()
     {
@@ -127,12 +136,12 @@ public class GameManager : MonoBehaviour
             // Turn On PM
             if (fifteenminincrements >= 1 && ampm == false)
             {
-                ampm = true;
+                ampm = false;
             }
             // Turn On AM
             if (fifteenminincrements >= 48 && ampm == true)
             {
-                ampm = false;
+                ampm = true;
             }
         }
     }

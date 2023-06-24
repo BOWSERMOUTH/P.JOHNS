@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class ControlOfficer : MonoBehaviour
 {
     // States
-    public enum controlState { Searching, Stop, Approach, Strike, }
+    public enum controlState { Searching, Spot, Approach, Strike, }
     [SerializeField] controlState state;
     [SerializeField] List<AudioClip> clips;
     private bool startedSearching = true;
     private bool startedSpotting = false;
     private bool startedApproaching = false;
+    private bool reachingApproach = false;
     private bool atApproachPoint = false;
 
     // Control Officer Components
@@ -20,9 +22,15 @@ public class ControlOfficer : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer myspriteren;
     private AudioSource myAudio;
+    public AudioSource walkAudio;
     public float sightrotation;
     public bool spotted = false;
     public GameObject currentTarget = null;
+    private Vector3 offsetdistance;
+    private int whichway;
+    public SphereCollider spherecollider;
+    private GameObject searchlight;
+    public GameObject caughtbirdparticle;
 
     // Other GameObject References
     private GameObject player;
@@ -31,13 +39,14 @@ public class ControlOfficer : MonoBehaviour
 
     void Start()
     {
+        gameman = GameObject.Find("GameManager").GetComponent<GameManager>();
         myAnimator = gameObject.GetComponentInChildren<Animator>();
         targetPosition = GameObject.Find("TeleporterEnd");
         myspriteren = GetComponentInChildren<SpriteRenderer>();
-        myAudio = gameObject.GetComponentInChildren<AudioSource>();
-        gameman = GameObject.Find("GameManager").GetComponent<GameManager>();
+        myAudio = gameObject.GetComponent<AudioSource>();
         myNma = GetComponent<NavMeshAgent>();
         player = GameObject.Find("PJohns");
+        searchlight = GameObject.Find("SearchLight");
     }
     private void ControlOfficerState()
     {
@@ -48,6 +57,7 @@ public class ControlOfficer : MonoBehaviour
             if (startedSearching)
             {
                 // ControlOfficer is on the move to destination
+                walkAudio.Play();
                 myNma.isStopped = false;
                 myAnimator.SetBool("Walking", true);
                 myAnimator.speed = 1f;
@@ -74,37 +84,83 @@ public class ControlOfficer : MonoBehaviour
             // 3 fanned out Rays looking for PJohns
             GeneralSight();
         }
+        // SPOT
+        if (state == controlState.Spot)
+        {
+            if (spotted)
+            {
+                myAnimator.SetBool("Walking", false);
+                myNma.isStopped = true;
+                myAudio.PlayOneShot(clips[0], 1f);
+                StartCoroutine(SpottedAnimation());
+                IEnumerator SpottedAnimation()
+                {
+                    searchlight.transform.LookAt(currentTarget.transform);
+                    myAnimator.SetBool("Prepare", true);
+                    yield return new WaitForSeconds(1.2f);
+                    myAnimator.SetBool("Prepare", false);
+                    startedApproaching = true;
+                    state = controlState.Approach;
+                }
+                spotted = false;
+            }
+        }
         // INVESTIGATING
         if (state == controlState.Approach)
         {
+            searchlight.transform.LookAt(currentTarget.transform);
             // ONLY PLAYS ONCE
             if (startedApproaching)
             {
-                myAudio.pitch = .3f;
-                myAudio.Play();
-                myAnimator.speed = .5f;
-                myNma.SetDestination(targetPosition.transform.position);
-                myNma.speed = 1f;
+                if (transform.position.x > currentTarget.transform.position.x)
+                {
+                    whichway = 1;
+                }
+                else
+                {
+                    whichway = -1;
+                }
+                offsetdistance = new Vector3((currentTarget.transform.position.x + (1f * whichway)), currentTarget.transform.position.y, currentTarget.transform.position.z);
                 myNma.isStopped = false;
-                atApproachPoint = true;
+                myAnimator.SetBool("Walking", true);
+                myNma.SetDestination(offsetdistance);
+                myNma.speed = .7f;
+                myAnimator.speed = myNma.speed;
+                reachingApproach = true;
                 startedApproaching = false;
+                walkAudio.Play();
             }
             // If you get to approach place and haven't seen Pigeons, wait 3s & return to Searching
-            float distance = Vector3.Distance(transform.position, targetPosition.transform.position);
-            if (distance <= .3f && atApproachPoint)
+            float distance = Vector3.Distance(transform.position, offsetdistance);
+            if (distance <= .2f && reachingApproach)
             {
                 myNma.isStopped = true;
                 myAnimator.SetBool("Walking", false);
                 StartCoroutine(SecondTimer());
+                reachingApproach = false;
                 IEnumerator SecondTimer()
                 {
-                    yield return new WaitForSeconds(3);
-                    myAudio.pitch = 1f;
-                    gameman.UnSpotted();
-                    startedSearching = true;
-                    state = controlState.Searching;
+                    searchlight.transform.LookAt(currentTarget.transform);
+                    walkAudio.Stop();
+                    myAnimator.speed = 1;
+                    yield return new WaitForSeconds(1.5f);
+                    myAnimator.SetBool("Strike", true);
+                    yield return new WaitForSeconds(.3f);
+                    myAudio.PlayOneShot(clips[Random.Range(1, 3)], 1f);
+                    SwingSound();
+                    yield return new WaitForSeconds(2f);
+                    myAnimator.SetBool("Strike", false);
+                    if (currentTarget == null)
+                    {
+                        startedSearching = true;
+                        searchlight.transform.rotation = Quaternion.Euler((25.663f * whichway), (90 * transform.localScale.x), 0);
+                        state = controlState.Searching;
+                    }
+                    else
+                    {
+                        startedApproaching = true;
+                    }
                 }
-                atApproachPoint = false;
             }
         }
         // CAUGHT
@@ -118,34 +174,84 @@ public class ControlOfficer : MonoBehaviour
         // Creates 3 Raycasts fanning out in front of him
         RaycastHit hit;
         LayerMask defaultLayerMask = 1 << 0;
-        LayerMask playerLayerMask = 1 << 6;
+        LayerMask pigeonLayerMask = 1 << 16;
         LayerMask interLayerMask = 1 << 8;
-        LayerMask mask = defaultLayerMask | playerLayerMask | interLayerMask;
-        Vector3 rayOrigin = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        LayerMask mask = defaultLayerMask | pigeonLayerMask | interLayerMask;
+        Vector3 rayAtAnkle = new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z);
+        Vector3 rayAtFeet = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        // Ray Length & Direction
         Vector3 currentPos = Vector3.back * 3f;
-        sightrotation += 520 * Time.deltaTime;
-        if (sightrotation >= 180)
+        Vector3 currentDiagPos = new Vector3(transform.localScale.x, 0,0) * 3f;
+        sightrotation += 800 * Time.deltaTime;
+        if (sightrotation >= 360)
         {
             sightrotation = 0f;
         }
         currentPos = Quaternion.Euler(0, sightrotation, 0) * currentPos;
-        Debug.DrawRay(rayOrigin, currentPos, Color.green);
+        currentDiagPos = Quaternion.Euler(0, -sightrotation, 45) * currentDiagPos;
+        Debug.DrawRay(rayAtAnkle, currentPos, Color.green);
+        Debug.DrawRay(rayAtFeet, currentDiagPos, Color.blue);
         // If the raycast hits Player, go to SPOTTED mode. 
-        if (Physics.Raycast(rayOrigin, currentPos, out hit, 3f, mask))
+        if (Physics.Raycast(rayAtAnkle, currentPos, out hit, 4f, mask))
         {
             if (hit.transform.tag == "Pigeon")
             {
                 spotted = true;
                 currentTarget = hit.transform.gameObject;
-                gameman.Spotted();
-                myAudio.Play();
                 startedSpotting = true;
-                state = controlState.Stop;
+                state = controlState.Spot;
             }
+        }
+        else if (Physics.Raycast(rayAtFeet, currentDiagPos, out hit, 4f, mask))
+        {
+            if (hit.transform.tag == "Pigeon")
+            {
+                spotted = true;
+                currentTarget = hit.transform.gameObject;
+                startedSpotting = true;
+                state = controlState.Spot;
+            }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Pigeon")
+        {
+            Instantiate(caughtbirdparticle, new Vector3(other.transform.position.x, other.transform.position.y + .3f, other.transform.position.z), Quaternion.identity);
+            Destroy(other.gameObject);
+        }
+    }
+    private void FlipSprite()
+    {
+        bool whichDirectionPlayerFacing = myNma.velocity.x > 0f;
+        if (whichDirectionPlayerFacing)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
-            spotted = false;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+    public void FootStep()
+    {
+        myAudio.PlayOneShot(clips[3], 1f);
+    }
+    public void WalkJingle()
+    {
+        walkAudio.Play();
+    }
+    public void SwingSound()
+    {
+        myAudio.PlayOneShot(clips[Random.Range(5, 7)], 1f);
+    }
+    public void ControlOfficerHit()
+    {
+        myAudio.PlayOneShot(clips[7], 1f);
+    }
+    void Update()
+    {
+        ControlOfficerState();
+        FlipSprite();
     }
 }
