@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ControlOfficerAnimatorSounds : MonoBehaviour
 {
+    private GameManager gamemanager;
+    private void Start()
+    {
+        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     private void Footstep()
     {
         GameObject.Find("ControlOfficer").GetComponent<ControlOfficer>().FootStep();
@@ -19,5 +24,9 @@ public class ControlOfficerAnimatorSounds : MonoBehaviour
     private void ControlOfficerHit()
     {
         GameObject.Find("ControlOfficer").GetComponent<ControlOfficer>().ControlOfficerHit();
+    }
+    private void CameraShake()
+    {
+        gamemanager.CameraShake();
     }
 }

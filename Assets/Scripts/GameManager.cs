@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
             //hotdog.name = "Hotdog";
             hotdog = GameObject.Find("Hotdog");
         }
-        CinemachineVirtualCamera cinemachine = GameObject.Find("FollowPlayer").GetComponent<CinemachineVirtualCamera>();
+        cinemachine = gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
         cinemachine.Follow = player.transform;
         myaudio = gameObject.GetComponent<AudioSource>();
         GameObject.Find("crosshair").GetComponent<Crosshair>().InitializeCrosshair();
@@ -87,6 +87,16 @@ public class GameManager : MonoBehaviour
         foodText = GameObject.Find("FoodText").GetComponent<TMP_Text>();
         nightlightobjects = GameObject.FindGameObjectsWithTag("NightLight");
         ControlOfficerTime();
+    }
+    public void CameraShake()
+    {
+        StartCoroutine(Wobble());
+        IEnumerator Wobble()
+        {
+            cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1f;
+            yield return new WaitForSeconds(.2f);
+            cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0f;
+        }
     }
     public void PoliceTime()
     {
