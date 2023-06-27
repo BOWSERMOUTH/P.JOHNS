@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Intensity: 1445.4985
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 0
+  m_InnerSpotPercent: 69.9
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -403,18 +403,21 @@ MonoBehaviour:
   state: 0
   clips:
   - {fileID: 8300000, guid: 4b75b2b4e5978f44189e87cc09026f9e, type: 3}
-  - {fileID: 8300000, guid: 4363e17a3af10ec438cf3b3b041da0f5, type: 3}
-  - {fileID: 8300000, guid: d43da2eacddb6f84284727f3d2553481, type: 3}
+  - {fileID: 8300000, guid: b0f2bf033e2b82348b5cc0ee19ddf316, type: 3}
+  - {fileID: 8300000, guid: 1ab238a33f9f97948b376c2125ab7605, type: 3}
   - {fileID: 8300000, guid: 97a91773bd9781d4db922a082224a0e0, type: 3}
   - {fileID: 8300000, guid: 2855408b83cf8514195be2cac2661e83, type: 3}
   - {fileID: 8300000, guid: 4363e17a3af10ec438cf3b3b041da0f5, type: 3}
   - {fileID: 8300000, guid: d43da2eacddb6f84284727f3d2553481, type: 3}
+  - {fileID: 8300000, guid: e3738786bd75f0549b4cae06fff69d6c, type: 3}
   myNma: {fileID: 0}
   walkAudio: {fileID: 6597470644737403139}
   sightrotation: 0
   spotted: 0
   currentTarget: {fileID: 0}
   spherecollider: {fileID: 0}
+  caughtbirdparticle: {fileID: 5954751323984535724, guid: f6654aca1b7e5b2409f55a1b7edf88dc,
+    type: 3}
   targetPosition: {fileID: 0}
 --- !u!82 &1029107144462818435
 AudioSource:

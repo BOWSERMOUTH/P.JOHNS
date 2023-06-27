@@ -31,6 +31,7 @@ public class ControlOfficer : MonoBehaviour
     public SphereCollider spherecollider;
     private GameObject searchlight;
     public GameObject caughtbirdparticle;
+    private int capturedBirds;
 
     // Other GameObject References
     private GameObject player;
@@ -95,6 +96,7 @@ public class ControlOfficer : MonoBehaviour
                 StartCoroutine(SpottedAnimation());
                 IEnumerator SpottedAnimation()
                 {
+                    currentTarget.tag = "Pursued";
                     searchlight.transform.LookAt(currentTarget.transform);
                     myAnimator.SetBool("Prepare", true);
                     yield return new WaitForSeconds(1.2f);
@@ -215,9 +217,10 @@ public class ControlOfficer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Pigeon")
+        if (other.gameObject.tag == "Pigeon" || other.gameObject.tag == "Pursued")
         {
             Instantiate(caughtbirdparticle, new Vector3(other.transform.position.x, other.transform.position.y + .3f, other.transform.position.z), Quaternion.identity);
+            capturedBirds++;
             Destroy(other.gameObject);
         }
     }

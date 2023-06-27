@@ -32,7 +32,9 @@ public class PJohns : MonoBehaviour
     private Vector3 foodPosB;
     private float gravity = -9.81f;
     public int foodmove;
-    private int doubletapcount = 0;
+    private bool doubletapstarted = false;
+    public int doubletapcount = 0;
+    public float doubletaptimer = .5f;
     public bool foodCollected = false;
     public bool zipToPlayer = false;
     public bool isTouchingGround;
@@ -122,6 +124,19 @@ public class PJohns : MonoBehaviour
         {
             DumpsterDive();
         }
+        if (state == playerState.SendAway)
+        {
+            myAnimator.SetBool("SendAway", true);
+            StartCoroutine(SendAwayTimer());
+            IEnumerator SendAwayTimer()
+            {
+                yield return new WaitForSeconds(1.583f);
+                myAnimator.SetBool("SendAway", false);
+                doubletapcount = 0;
+                doubletaptimer = .5f;
+                state = playerState.GeneralMovement;
+            }
+        }
     }
     private void Walk()
     {
@@ -185,6 +200,8 @@ public class PJohns : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q) && (!isCrouching) && (!jumppressed))
         {
+            doubletapstarted = true;
+            doubletapcount++;
             state = playerState.Whisper;
         }
         playerVelocity.y += gravity * Time.deltaTime;
@@ -344,6 +361,29 @@ public class PJohns : MonoBehaviour
             controller.Move(direction * Time.deltaTime);
             bool playerHasHorizontalSpeed = Mathf.Abs(direction.x + direction.z) > Mathf.Epsilon; // bool deciding if velocity is higher than 0
             myAnimator.SetBool("CrouchWalking", playerHasHorizontalSpeed);
+        }
+    }
+    private void SendAway()
+    {
+        if (doubletapstarted)
+        {
+            StartCoroutine(DoubleTap());
+            IEnumerator DoubleTap()
+            {
+                doubletaptimer -= Time.deltaTime;
+                if (doubletaptimer <= 0)
+                {
+                    doubletapcount = 0;
+                    doubletaptimer = .5f;
+                    doubletapstarted = false;
+                }
+                yield return null;
+            }
+        }
+        if (doubletapcount >= 2)
+        {
+            doubletapstarted = false;
+            state = playerState.SendAway;
         }
     }
     private void Whispering()
@@ -600,5 +640,6 @@ public class PJohns : MonoBehaviour
         FlipSprite();
         PlayerState();
         CollectFood();
+        SendAway();
     }
 }

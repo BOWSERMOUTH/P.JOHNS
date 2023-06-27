@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityStandardAssets.CrossPlatformInput;
@@ -7,7 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class Pigeon : MonoBehaviour
 {
     // State Machine
-    public enum pigeonState { uncaptured, followplayer, followcommand, imlistening, returntoplayer, resetpigeon, respawnpigeon}
+    public enum pigeonState { uncaptured, followplayer, followcommand, imlistening, returntoplayer, resetpigeon, respawnpigeon, sendaway}
     public pigeonState state;
 
     //Pathfinding
@@ -75,6 +76,11 @@ public class Pigeon : MonoBehaviour
         {
             transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 6f, target.transform.position.z);
             state = pigeonState.returntoplayer;
+        }
+        if (state == pigeonState.sendaway)
+        {
+            myAnimator.SetBool("Flying", true);
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(Random.Range(player.transform.position.x -20f, player.transform.position.x + 20f), player.transform.position.y + 15f, gameObject.transform.position.z), 2f);
         }
     }
     private void Return2Player()

@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
         pigeonText = GameObject.Find("PigeonText").GetComponent<TMP_Text>();
         foodText = GameObject.Find("FoodText").GetComponent<TMP_Text>();
         nightlightobjects = GameObject.FindGameObjectsWithTag("NightLight");
-        ControlOfficerTime();
     }
     public void CameraShake()
     {

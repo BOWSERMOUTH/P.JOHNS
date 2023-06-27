@@ -56,7 +56,7 @@ public class Crosshair : MonoBehaviour
     {
         // Mouse Controls
         screenPosition = Input.mousePosition;
-        screenPosition.z = Camera.main.nearClipPlane + 2f;
+        screenPosition.z = Camera.main.nearClipPlane + 5f;
         worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         transform.position = worldPosition;
     }

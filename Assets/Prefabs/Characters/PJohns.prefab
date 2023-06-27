@@ -154,7 +154,7 @@ Transform:
   m_Children:
   - {fileID: 1923045184891627248}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &541839764065054067
 MonoBehaviour:
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965996ad2ca3cb04ba3f650e36d78857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  policeticker: 1
   state: 0
+  target: {fileID: 0}
   pigeonbox: []
   jumpHeight: 2
   climbSpeed: 2
@@ -184,6 +184,11 @@ MonoBehaviour:
   playerVelocity: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
   ledgeGrabPoint: {x: 0, y: 0, z: 0}
+  foodmove: 0
+  doubletapcount: 0
+  doubletaptimer: 0.5
+  foodCollected: 0
+  zipToPlayer: 0
   isTouchingGround: 0
   jumppressed: 0
   isCrouching: 0
@@ -194,8 +199,7 @@ MonoBehaviour:
   imWhispering: 0
   imHiding: 0
   pigeonshiding: 0
-  policeGenerator: {fileID: 7570563303818769734, guid: 1a9b67d61ba980d42879bd13441f768d,
-    type: 3}
+  gamemanager: {fileID: 0}
   myCollider: {fileID: 0}
   audioClips:
   - {fileID: 8300000, guid: 97c32996368a40b4face6758d1e0b4dd, type: 3}
